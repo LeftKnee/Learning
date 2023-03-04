@@ -1,2 +1,1 @@
-# Learning
-All learning stuff goes in here
+[![CodeFactor](https://www.codefactor.io/repository/github/leftknee/learning/badge)](https://www.codefactor.io/repository/github/leftknee/learning)

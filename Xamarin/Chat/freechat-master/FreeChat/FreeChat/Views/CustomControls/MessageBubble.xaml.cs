@@ -25,7 +25,6 @@ namespace FreeChat.Views.CustomControls
 
         private void TextChanged(string oldText, string newText)
         {
-
         }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace FreeChat.Views.CustomControls
 
         private void BackgroundColorChanged(Color oldBackgroundColor, Color newBackgroundColor)
         {
-
         }
 
         /// <summary>
@@ -77,7 +75,6 @@ namespace FreeChat.Views.CustomControls
 
         private void ReplyTappedCommandChanged(ICommand oldReplyTappedCommand, ICommand newReplyTappedCommand)
         {
-
         }
 
         /// <summary>

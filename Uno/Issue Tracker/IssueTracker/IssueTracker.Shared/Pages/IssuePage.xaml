@@ -1,0 +1,81 @@
+<Page
+    x:Class="IssueTracker.IssuePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="40" />
+    </Grid.RowDefinitions>
+
+    <CommandBar Style="{StaticResource DefaultCommandBarStyle}"  />
+
+    <StackPanel Orientation="Horizontal" Grid.Row="1" >
+      <TextBlock Text="Id" Margin="4,4,12,4" Width="22" VerticalAlignment="Center" HorizontalTextAlignment="Right" />
+      <TextBlock Text="{Binding Id}" Margin="2" Width="100" VerticalAlignment="Center"  />
+    </StackPanel>
+
+    <TextBox Grid.Row="2" Text="{Binding Title, Mode=TwoWay}" PlaceholderText="Title" Margin="4,12,4,4"  VerticalAlignment="Top"   />
+
+    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="4"  >
+      <Canvas Background="{Binding IssueTypeBrush}" Width="16" x:Name="IssueTypeIndicator" />
+      <ComboBox x:Name="IssueTypeBox"
+                ItemsSource="{Binding IssueTypeList}"
+                SelectedItem="{Binding Type,Mode=TwoWay}"
+                PlaceholderText="Enter the Issue Type"
+                HorizontalAlignment="Stretch"
+                Margin="12,4,4,4"/>
+    </StackPanel>
+
+    <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="4"  >
+      <TextBlock Text="Status" VerticalAlignment="Center"   />
+      <TextBlock Text="{Binding Status}"  Margin="12,4,4,4" VerticalAlignment="Center" />
+    </StackPanel>
+
+    <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="4"  >
+      <TextBlock Text="Started" VerticalAlignment="Center"   />
+      <TextBlock Text="{Binding StartedAt, Converter={StaticResource DateToStringConverter}, ConverterParameter='MMM dd, yyyy hh:mm tt'}"  Margin="12,4,4,4" VerticalAlignment="Center" />
+    </StackPanel>
+
+    <StackPanel Orientation="Horizontal" Grid.Row="6" Margin="4"  >
+      <TextBlock Text="Completed" VerticalAlignment="Center"   />
+      <TextBlock Text="{Binding CompletedAt, Converter={StaticResource DateToStringConverter}, ConverterParameter='MMM dd, yyyy hh:mm tt'}"  Margin="12,4,4,4" VerticalAlignment="Center" />
+    </StackPanel>
+
+    <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Stretch">
+      <TextBlock Text="Story Points" Width="80"  Margin="4" VerticalAlignment="Center" />
+      <TextBlock Text="{Binding Estimation,Mode=TwoWay}"
+                 Width="80" 
+                   HorizontalTextAlignment="Center"
+                   HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                   />
+      <Slider Value="{Binding Estimation,Mode=TwoWay}"  Minimum="0" Maximum="15" Margin="4" Width="200" VerticalAlignment="Center" />
+    </StackPanel>
+
+    <TextBox Text="{Binding Description,Mode=TwoWay}"
+             Grid.Row="8"
+             AcceptsReturn="True"
+             Header="Description"
+             Margin="4"
+             PlaceholderText="Enter Text Here" />
+
+    <StackPanel Orientation="Horizontal" Grid.Row="9" HorizontalAlignment="Center" >
+      <Button  Content="Start" Command="{Binding Start}" Margin="4" Visibility="{Binding StartVisibility}" />
+      <Button  Content="Complete" Command="{Binding Complete}" Margin="4" Visibility="{Binding CompleteVisibility}" />
+      <Button  Content="Clear Status" Command="{Binding ClearStatus}" Margin="4" Visibility="{Binding ClearStatusVisibility}" />
+      <Button  Content="Delete" Command="{Binding Delete}" Margin="4"  />
+    </StackPanel>
+
+  </Grid>
+</Page>

@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="IssueTracker.IssueListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <Grid>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40" />
+      <RowDefinition />
+      <RowDefinition Height="40" />
+      <RowDefinition Height="40" />
+    </Grid.RowDefinitions>
+
+    <ListView Grid.Row="1" Margin="4" ItemsSource="{Binding Issues}" HorizontalContentAlignment="Stretch"   >
+
+      <ListView.ItemContainerStyle>
+        <Style TargetType="ListViewItem">
+          <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+        </Style>
+      </ListView.ItemContainerStyle>
+
+      <ListView.ItemTemplate>
+
+        <DataTemplate>
+
+          <Button Command="{Binding Select}" Background="{Binding IssueTypeBrush}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" >
+
+            <Grid Margin="8" >
+
+              <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="60" />
+              </Grid.RowDefinitions>
+
+              <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                <TextBlock Text="{Binding Type}" FontWeight="Bold" VerticalAlignment="Center"  />
+                <TextBlock Text="#" FontWeight="Bold" VerticalAlignment="Center" Margin="4,4,0,4"  />
+                <TextBlock Text="{Binding Id}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,4,4,4"  />
+                <TextBlock Text="{Binding Title}" FontWeight="Bold"  Margin="12,4,4,4" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Status}" Margin="12,4,4,4" VerticalAlignment="Center" />
+              </StackPanel>
+
+              <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" >
+                <TextBlock Text="Started:" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding StartedAt, Converter={StaticResource DateToStringConverter}, ConverterParameter='MMM dd, yyyy hh:mm tt'}"  Margin="12,4,4,4" VerticalAlignment="Center" />
+                <TextBlock Text="Completed:" VerticalAlignment="Center" Margin="12,4,4,4" />
+                <TextBlock Text="{Binding CompletedAt, Converter={StaticResource DateToStringConverter}, ConverterParameter='MMM dd, yyyy hh:mm tt'}"  Margin="12,4,4,4" VerticalAlignment="Center" />
+              </StackPanel>
+
+              <TextBlock Text="{Binding Description}" Grid.Row="2" Height="60" TextWrapping="Wrap" Margin="0,4,4,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+            </Grid>
+
+          </Button>
+
+
+        </DataTemplate>
+
+      </ListView.ItemTemplate>
+    </ListView>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" >
+      <TextBlock Text="Total Remaining Story Points" VerticalAlignment="Center" />
+      <TextBlock Text="{Binding StoryPoints}"  Margin="12,4,4,4" VerticalAlignment="Center" />
+    </StackPanel>
+
+    <Button Grid.Row="3" Content="New Issue" Command="{Binding Add}" HorizontalAlignment="Center" Margin="2" VerticalAlignment="Stretch" />
+
+  </Grid>
+
+</Page>

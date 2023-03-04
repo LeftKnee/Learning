@@ -1,0 +1,15 @@
+﻿<Application
+    x:Class="IssueTracker.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    RequestedTheme="Light"
+    xmlns:ios="http://uno.ui/ios"
+		xmlns:android="http://uno.ui/android"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="ios android">
+
+  <Application.Resources>
+    <ResourceDictionary Source="Styles/_Styles.xaml"/>
+  </Application.Resources>
+
+</Application>
